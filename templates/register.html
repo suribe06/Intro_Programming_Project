@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+	<form method="POST" action="/register">
+		<div class="form-group" align="center">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<h1 style="color:#FFFFFF";>REGISTRARSE</h1>
+			<h2 style="color:#FFFFFF"><font size="3">Nombre:</font></h2>
+				<p><input type="text" maxlength="25" minlength="5" name="new_nombre" required=""></p>
+			<h3 style="color:#FFFFFF"><font size="3">Contraseña:</font></h3>
+				<p><input type="password" maxlength="25" minlength="3" name="new_contrasena" required=""></p>
+			<h4 style="color:#FFFFFF"><font size="3">Confirmar Contraseña:</font></h4>
+				<p><input type="password" maxlength="25" minlength="3" name="conf_contrasena" required=""></p>
+				<br/>
+				<p><input type="submit" class="btn bbtn-primary" value="Registrarse"></p>
+		</div>
+	</form>
+{% endblock %}

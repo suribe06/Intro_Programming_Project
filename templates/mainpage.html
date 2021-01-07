@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html Lang="es">
+	<head>
+		<meta charset="utf-8">
+		<link type="image/x-icon" href="https://image.ibb.co/fXxHgG/iconologo.jpg" rel="icon">
+		<title>United Chat</title>
+
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/static/js/default.js"></script>
+
+	</head>
+	<body style="background-color:#0174DF";>
+		<div align="left">
+			<style type="text/css">
+				.b1 {margin-top: -25px; margin-left: 140px; float: left; background-color: white;}
+				.b3 {margin-top: 500px; margin-left: -192px; float: left; background-color: white;}
+			</style>
+			<h1 style="color: white; margin-left: 66px;">CONTACTOS</h1>
+			<hr style="width: 330px; float: left; margin-top: -10px; margin-left: 5px; color: white;">
+			<div id="contactos" class="contactos" style="border : solid 2px #000000; background : #ffffff; color : #000000; padding : 4px; width : 320px; height : 400px; overflow : auto; float: left; margin-top: 10px; margin-left: 10px; ">
+				{%  for contacto in lista %}
+					{% if contacto in llc %}
+						<input type="checkbox" class="contacto_check" name="contacto_check" value="{{contacto}}">
+						{{contacto}}, {{x}}
+						<br>
+					{% else %}
+						<input type="checkbox" class="contacto_check" name="contacto_check" value="{{contacto}}">
+						{{contacto}}, {{y}}
+						<br>
+					{% endif %}
+				{%  endfor %}
+	        </div>
+			<hr style="width: 330px; float: left; margin-top: 440px; margin-left: -330px; color: white;">
+			<form method="POST" action="/mainpage">
+				<input style="margin-top: 460px; margin-left: -325px; float: left; background-color: white;" type="text" name="agregar" size="41" placeholder="Contacto a agregar...">
+				<button name="btn" value="agregar" style="margin-top: 500px; margin-left: -192px; float: left; background-color: white;">Agregar</button>
+			</form>
+			<font size="3" style="margin-top: 530px; margin-left: -250px; float: left;" >{{mensaje}}</font>
+			<div style="background-color:#0174DF; width:350px;height:618px; border-right:4px solid white; margin-top: -72px; ">
+			</div>
+		</div>
+		<div align="right">
+			<style type="text/css">
+				.form-control {margin-top: -55px; margin-left: 365px; float: left}
+				.b2 {margin-top: -55px; margin-right: 10px; float: right; background-color: white;}
+				.b4 {margin-top: -600px; margin-right: 20px; float: right; background-color: white;}
+			</style>
+			<form method="POST" action="/mainpage">
+				<button class="b4" name="btn" value="Salir">
+					<span style="font-family: Tahoma, sans-serif; margin-left: 5px; margin-right: 5px; color: black;" id="usuario">{{usuario}}</span>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Octicons-sign-out.svg" height="50" width="50" align="right"; margin:2px"/>
+				</button>
+			</form>
+			<hr style="width: 1530px; float: right; margin-top: -516px; margin-right: 5px; color: white;">
+			
+			<form id="chat-form" method="POST" enctype="multipart/form-data">
+	        	<div class="panel panel-default">
+	        		<div class="panel panel-default" id="chat-output" style="border : solid 2px #000000; background : #ffffff; color : #000000; padding : 4px; width : 1500px; height : 440px; overflow : auto; float: right; margin-top: -500px; margin-right: 10px; ">
+						
+	        		</div>
+	            </div>
+	            <br>
+	            <div class="text-right">
+	            	<input type="file" name="archivo" value="Archivar" style="color: transparent; margin-top: -55px; margin-right: -5px; float: right;">
+	                <button type="button" id="clear-button" class="btn btn-warning" style="margin-top: -55px; margin-right: 10px; float: right; background-color: white;">Borrar Todo</button>
+	                <!--<button type="button" id="test-button" class="btn btn-info">Send test</button>-->
+	                <button type="submit" name="btn" value="enviar" class="btn btn-success" style=" margin-top: -55px; margin-right: 105px; float: right; background-color: white;">Enviar</button>
+	            </div>
+	        </form>
+
+			<input class="form-control" id="chat-input" style="" type="text" name="mensaje" size="170" placeholder="Escriba su mensaje aqui...">
+		</div>
+		
+	</body>
+</html>
